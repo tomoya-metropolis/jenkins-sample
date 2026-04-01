@@ -1,0 +1,26 @@
+- name: Download JDK
+  ansible.builtin.get_url:
+    url: https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+    dest: /tmp/jdk-21.tar.gz
+
+- name: Unarchive jdk-21.tar.gz
+  ansible.builtin.unarchive:
+    src: /tmp/jdk-21.tar.gz
+    dest: /usr/local/
+    remote_src: true
+
+- name: Create a symbolic link to JDK
+  ansible.builtin.file:
+    src: /usr/local/jdk-21.0.10
+    dest: /usr/local/java
+    state: link
+    owner: root
+    group: root
+
+- name: Upload profile for JDK
+  ansible.builtin.copy:
+    src: java.sh
+    dest: /etc/profile.d/
+    mode: "0644"
+    owner: root
+    group: root
