@@ -1,0 +1,14 @@
+[Unit]
+Description=Jenkins Continuous Integration Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/java/bin/java -jar /usr/local/jenkins/jenkins.war --httpPort=8080
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

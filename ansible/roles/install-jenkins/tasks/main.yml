@@ -1,0 +1,33 @@
+- name: Download Jenkins
+  ansible.builtin.get_url:
+    url: https://get.jenkins.io/war-stable/2.541.3/jenkins.war
+    dest: /tmp/jenkins.war
+
+- name: Create directory for Jenkins
+  ansible.builtin.file:
+    path: /usr/local/jenkins
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+
+- name: Move war file
+  ansible.builtin.copy:
+    src: /tmp/jenkins.war
+    dest: /usr/local/jenkins
+    remote_src: true
+
+- name: Upload service file for Jenkins
+  ansible.builtin.copy:
+    src: jenkins.service
+    dest: /etc/systemd/system/
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Enable service Jenkins
+  ansible.builtin.systemd_service:
+    name: jenkins
+    enabled: true
+    daemon_reload: true
+    state: started
