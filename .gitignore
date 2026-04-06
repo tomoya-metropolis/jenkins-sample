@@ -1,3 +1,36 @@
+# Ansible
 hosts
-key
-variables.pkr.hcl
+*.retry
+*.log
+.venv/
+venv/
+.tox/
+.molecule/
+dist/
+build/
+*.tar.gz
+.idea/
+.vscode/
+.DS_Store
+
+# Packer
+packer_cache/
+*.box
+crash.log
+output-*/
+*.pkrvars.hcl
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
