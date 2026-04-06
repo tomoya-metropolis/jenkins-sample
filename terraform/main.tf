@@ -11,6 +11,6 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
-module "network" {
-  source = "./module/network"
+module "compute" {
+  source = "./module/compute"
 }
