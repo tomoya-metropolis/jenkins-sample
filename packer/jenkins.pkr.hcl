@@ -1,6 +1,6 @@
 variables {
   source_ami = ""
-  subnet_id = ""
+  subnet_id  = ""
 }
 
 packer {
