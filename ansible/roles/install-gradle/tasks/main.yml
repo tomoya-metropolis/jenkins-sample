@@ -1,0 +1,26 @@
+- name: Download Gradle
+  ansible.builtin.get_url:
+    url: https://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+    dest: /tmp/gradle-9.4.1-bin.zip
+
+- name: Unarchive gradle-9.4.1-bin.zip
+  ansible.builtin.unarchive:
+    src: /tmp/gradle-9.4.1-bin.zip
+    dest: /usr/local/
+    remote_src: true
+
+- name: Create a symbolic link to Gradle
+  ansible.builtin.file:
+    src: /usr/local/gradle-9.4.1
+    dest: /usr/local/gradle
+    state: link
+    owner: root
+    group: root
+
+- name: Upload profile for Gradle
+  ansible.builtin.copy:
+    src: gradle.sh
+    dest: /etc/profile.d/
+    mode: "0644"
+    owner: root
+    group: root

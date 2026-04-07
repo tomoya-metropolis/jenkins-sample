@@ -8,4 +8,5 @@
     - upgrade-all-packages
     - install-development-tools
     - install-jdk
+    - install-gradle
     - install-jenkins
