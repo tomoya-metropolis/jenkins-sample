@@ -34,7 +34,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 }
 
 resource "aws_instance" "jenkins" {
-  ami                         = "ami-0053d231eed60f51b"
+  ami                         = var.ami
   instance_type               = "t3.micro"
   subnet_id                   = module.network.subnet_id
   associate_public_ip_address = true
