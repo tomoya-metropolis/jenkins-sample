@@ -13,4 +13,5 @@ provider "aws" {
 
 module "compute" {
   source = "./module/compute"
+  ami    = var.ami
 }
