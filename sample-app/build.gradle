@@ -1,0 +1,18 @@
+plugins {
+	id 'java'
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation("org.junit.platform:junit-platform-launcher:6.0.3")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.3")
+}
